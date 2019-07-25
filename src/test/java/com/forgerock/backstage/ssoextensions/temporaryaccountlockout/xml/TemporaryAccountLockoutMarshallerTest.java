@@ -28,8 +28,6 @@ import static org.junit.Assert.*;
 
 public class TemporaryAccountLockoutMarshallerTest {
     private final int INVALID_COUNT = 3;
-    private final String TIMESTAMP = "2019-04-03T09:27:39.674Z";
-    private final long TIMESTAMP_MILLIS = 1554283659674L;
     private final TemporaryAccountLockoutMarshaller marshaller = new TemporaryAccountLockoutMarshaller();
 
     public TemporaryAccountLockoutMarshallerTest() throws JAXBException {
@@ -47,6 +45,7 @@ public class TemporaryAccountLockoutMarshallerTest {
     }
 
     private String getXml() {
+        long TIMESTAMP_MILLIS = 1554283659674L;
         return "" +
                 "<InvalidPassword>\n" +
                 "    <InvalidCount>" + INVALID_COUNT + "</InvalidCount>\n" +
@@ -58,6 +57,7 @@ public class TemporaryAccountLockoutMarshallerTest {
     }
 
     private TemporaryAccountLockout getTemporaryAccountLockout() {
+        String TIMESTAMP = "2019-04-03T09:27:39.674Z";
         return new TemporaryAccountLockout(INVALID_COUNT, Instant.parse(TIMESTAMP));
     }
 }
